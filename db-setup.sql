@@ -1,11 +1,9 @@
-DROP SCHEMA Congress;
-
 CREATE SCHEMA Congress;
 
 USE Congress;
 
 CREATE TABLE Votes (
-	voteID VARCHAR(16) PRIMARY KEY,
+    voteID VARCHAR(16) PRIMARY KEY,
     updatedAt DATE NOT NULL,
     type VARCHAR(255) NOT NULL,
     subject VARCHAR(1000) NOT NULL,
@@ -19,17 +17,23 @@ CREATE TABLE Votes (
 );
 
 CREATE TABLE CongressMembers (
-	memberID VARCHAR(10) PRIMARY KEY,
+    memberID VARCHAR(10) PRIMARY KEY,
     displayName VARCHAR(50) NOT NULL,
     party CHAR(1) NOT NULL,
     state CHAR(2) NOT NULL
 );
 
 CREATE TABLE MemberVotes (
-	voteID VARCHAR(16) NOT NULL,
+    voteID VARCHAR(16) NOT NULL,
     memberID VARCHAR(10) NOT NULL,
     memberVote VARCHAR(100) NOT NULL,
     CONSTRAINT MemberVotes_PK PRIMARY KEY (voteID, memberID),
     CONSTRAINT MemberVotes_voteID_FK FOREIGN KEY (voteID) REFERENCES Votes (voteID),
     CONSTRAINT MemberVotes_memberID_FK FOREIGN KEY (memberID) REFERENCES CongressMembers (memberID)
+);
+
+CREATE TABLE BatchControl (
+    batchID INT PRIMARY KEY AUTO_INCREMENT,
+    executedDT DATETIME NOT NULL,
+    outcome INT
 );
