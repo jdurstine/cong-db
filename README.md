@@ -18,7 +18,7 @@ Congress is the primary schema for holding congressional data. It is composed of
   <img src="https://github.com/jdurstine/cong-db/blob/master/congress-erd.png">
 </p>
 
-Althought not complete, the CongressErrors schema provides the scaffolding for a more robust error tracking outside of logging critical failures. The table SystemErrors_Loader keeps track of any issues that occur while importing scraped data into the database which did not result from an unhandled error. The errors stored here typically result from unexpected input from the side of the scraper. The path to the offending data and the specific error are logged. The systems table provides a way of tracking import errors down to additional systems if those systems are added.
+Although not complete, the CongressErrors schema provides the scaffolding for a more robust error tracking outside of logging critical failures. The table SystemErrors_Loader keeps track of any issues that occur while importing scraped data into the database which did not result from an unhandled error. The errors stored here typically result from unexpected input from the side of the scraper. The path to the offending data and the specific error are logged. The systems table provides a way of tracking import errors down to additional systems if those systems are added.
 
 <p align="center">
   <img src="https://github.com/jdurstine/cong-db/blob/master/congresserror-erd.png"
